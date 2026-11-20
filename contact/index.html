@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Langford | Ramos</title>
+  <meta name="description" content="Contact Langford | Ramos at 801.328.4090 or help@langfordramos.com. 8 East Broadway, #420, Salt Lake City, Utah 84111.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/favicon/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact - Langford | Ramos">
+  <meta property="og:description" content="Contact Langford | Ramos at 801.328.4090 or help@langfordramos.com. 8 East Broadway, #420, Salt Lake City, Utah 84111.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/images/og-image.png">
+
+  <!-- Preload Fonts -->
+  <link rel="preload" href="../assets/fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/pt-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <a href="../" class="header-logo-link">
+      <img src="../assets/images/logo-800.png" alt="Langford | Ramos" class="header-logo" width="800" height="129">
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../attorneys/">Attorneys</a></li>
+        <li><a href="../practice/">Practice</a></li>
+        <li><a href="./" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-section page-section--ivory">
+      <div class="contact-layout">
+        <div class="contact-header-row">
+          <h1>Contact.</h1>
+          <div class="contact-intro">
+            <p>For new matters, contact our office directly or use the form below.</p>
+            <p>Submitting this form does not create an attorney-client relationship. Do not include confidential information until representation has been confirmed.</p>
+          </div>
+        </div>
+
+        <div class="contact-call-btn">
+          <a href="tel:+18013284090" class="btn btn--full">Call 801.328.4090</a>
+        </div>
+
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/help@langfordramos.com" method="POST">
+          <!-- Hidden fields -->
+          <input type="hidden" name="_subject" value="New website inquiry - Langford | Ramos">
+          <input type="hidden" name="_next" value="https://langfordramos.com/thanks/">
+          <input type="hidden" name="_template" value="table">
+          <!-- Honeypot -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-row-double">
+            <div class="form-row">
+              <label for="first_name">First Name <span class="required-hint">(required)</span></label>
+              <input type="text" id="first_name" name="first_name" required autocomplete="given-name">
+            </div>
+            <div class="form-row">
+              <label for="last_name">Last Name <span class="required-hint">(required)</span></label>
+              <input type="text" id="last_name" name="last_name" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email <span class="required-hint">(required)</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" inputmode="email">
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel">
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+
+          <p class="form-disclaimer">Do not include confidential information.</p>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn">Send</button>
+          </div>
+
+          <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <a href="tel:+18013284090">801.328.4090</a>
+      </div>
+      <address>
+        8 East Broadway, #420<br>
+        Salt Lake City, Utah 84111
+      </address>
+      <div>
+        <a href="mailto:help@langfordramos.com">help@langfordramos.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/contact.js"></script>
+</body>
+</html>

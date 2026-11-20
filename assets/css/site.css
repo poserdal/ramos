@@ -1,0 +1,735 @@
+/* ========================================
+   Langford | Ramos - Site Styles
+   Mobile-first CSS
+   ======================================== */
+
+/* ----- Font Faces ----- */
+@font-face {
+  font-family: "Marcellus";
+  src: url("../fonts/marcellus-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: url("../fonts/pt-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: url("../fonts/pt-serif-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ----- Design Tokens ----- */
+:root {
+  --ink: #303636;
+  --white: #ffffff;
+  --ivory: #f8f8f4;
+  --hero-bg: #fafaf8;
+  --field: #e5e3dc;
+  --accent: #d4967d;
+
+  --font-heading: "Marcellus", Georgia, "Times New Roman", serif;
+  --font-body: "PT Serif", Georgia, "Times New Roman", serif;
+
+  --pad-x: clamp(1.25rem, 3vw, 3rem);
+  --measure: 34rem;
+}
+
+/* ----- Reset ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--white);
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ----- Focus Styles ----- */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ----- Skip Link ----- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--pad-x);
+  background: var(--white);
+  color: var(--ink);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ----- Page Fade Animation ----- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+main {
+  animation: fade-in 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none;
+  }
+}
+
+/* ----- Typography ----- */
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1.tagline {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 2.8rem);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h3,
+.h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p {
+  max-width: var(--measure);
+}
+
+.partner-title {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ----- Links ----- */
+a {
+  color: var(--ink);
+}
+
+/* ----- Buttons ----- */
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  min-height: 48px;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--accent);
+}
+
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+/* ----- Header ----- */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--ink);
+  padding: 1.5rem var(--pad-x);
+}
+
+.header-logo {
+  width: clamp(180px, 56vw, 240px);
+  height: auto;
+}
+
+.header-logo-link {
+  display: block;
+}
+
+.site-nav {
+  margin-top: 1rem;
+}
+
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-nav a {
+  display: block;
+  padding: 0.75rem 0;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 900px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5rem var(--pad-x);
+  }
+
+  .header-logo {
+    width: clamp(300px, 34vw, 490px);
+  }
+
+  .site-nav {
+    margin-top: 0;
+  }
+
+  .site-nav ul {
+    gap: 2.5rem;
+  }
+}
+
+/* ----- Footer ----- */
+.site-footer {
+  background: var(--white);
+  padding: 3rem var(--pad-x);
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.footer-content a {
+  display: block;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content address {
+  font-style: normal;
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer-content > * {
+    flex: 1;
+  }
+
+  .footer-content > *:nth-child(2) {
+    text-align: center;
+  }
+
+  .footer-content > *:nth-child(3) {
+    text-align: right;
+  }
+
+  .footer-content a {
+    justify-content: inherit;
+  }
+}
+
+/* ----- Page Sections ----- */
+.page-section {
+  padding: 3rem var(--pad-x);
+}
+
+.page-section--ivory {
+  background: var(--ivory);
+}
+
+.page-section--hero-bg {
+  background: var(--hero-bg);
+}
+
+.page-section--white {
+  background: var(--white);
+}
+
+/* ----- Home Page ----- */
+.hero {
+  background: var(--hero-bg);
+}
+
+.hero-content {
+  padding: 3rem var(--pad-x) 0;
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    position: relative;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 5.5vw;
+    left: 6.5vw;
+    padding: 0;
+    max-width: 40%;
+  }
+}
+
+/* ----- Attorneys Page ----- */
+.attorneys-intro {
+  margin-bottom: 3rem;
+}
+
+.attorneys-intro p {
+  margin-top: 1.5rem;
+}
+
+.attorney-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.attorney {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.attorney-portrait {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 7 / 8;
+  object-fit: cover;
+  clip-path: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
+}
+
+.attorney h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.attorney p {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .attorneys-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .attorneys-intro {
+    margin-bottom: 0;
+  }
+
+  .attorney-list {
+    display: contents;
+  }
+}
+
+/* ----- Practice Page ----- */
+.practice-intro {
+  margin-bottom: 3rem;
+}
+
+.practice-intro p {
+  margin-top: 1.5rem;
+}
+
+.practice-area-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.practice-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.practice-area-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.practice-area h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.practice-area p {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .practice-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .practice-intro {
+    margin-bottom: 0;
+  }
+
+  .practice-area-list {
+    gap: 2.5rem;
+  }
+
+  .practice-area {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .practice-area-image {
+    width: 216px;
+    flex-shrink: 0;
+    aspect-ratio: 15 / 16;
+  }
+
+  .practice-area-content {
+    flex: 1;
+  }
+}
+
+/* ----- Cases Marquee ----- */
+.cases-strip {
+  background: var(--white);
+  padding: 2.5rem var(--pad-x);
+  overflow: hidden;
+}
+
+.cases-strip h2 {
+  font-size: clamp(1.5rem, 1rem + 2.2vw, 2.75rem);
+  margin-bottom: 1.5rem;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 0.5em;
+  padding-right: 0.5em;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 1rem + 2.2vw, 2.75rem);
+  white-space: nowrap;
+}
+
+.marquee-content span::after {
+  content: ",";
+}
+
+.marquee-content span:last-child::after {
+  content: "";
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+  }
+
+  .marquee-content[aria-hidden="true"] {
+    display: none;
+  }
+
+  .marquee-content {
+    white-space: normal;
+  }
+}
+
+@media (min-width: 900px) {
+  .cases-strip {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .cases-strip h2 {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .marquee-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* ----- Contact Page ----- */
+.contact-intro {
+  margin-bottom: 2rem;
+}
+
+.contact-intro p {
+  margin-top: 1rem;
+}
+
+.contact-call-btn {
+  margin: 2rem 0;
+}
+
+@media (min-width: 900px) {
+  .contact-call-btn {
+    display: none;
+  }
+}
+
+.contact-form {
+  max-width: 600px;
+}
+
+.form-row {
+  margin-bottom: 1.5rem;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-row .required-hint {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--field);
+  border: none;
+  border-radius: 10px;
+  min-height: 48px;
+}
+
+.form-row textarea {
+  resize: vertical;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.form-disclaimer {
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.form-submit-row {
+  display: flex;
+  justify-content: stretch;
+}
+
+.form-submit-row .btn {
+  flex: 1;
+}
+
+@media (min-width: 900px) {
+  .contact-layout {
+    max-width: 1010px;
+    margin: 0 auto;
+  }
+
+  .contact-header-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .contact-intro {
+    margin-bottom: 0;
+  }
+
+  .form-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-row-double .form-row {
+    margin-bottom: 0;
+  }
+
+  .form-submit-row {
+    justify-content: flex-end;
+  }
+
+  .form-submit-row .btn {
+    flex: none;
+    min-width: 150px;
+  }
+}
+
+/* ----- Form States ----- */
+.form-status {
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.form-status--success {
+  background: var(--field);
+}
+
+.form-status--error {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ----- Thanks & 404 Pages ----- */
+.utility-page {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.utility-page h1 {
+  margin-bottom: 1.5rem;
+}
+
+.utility-page a {
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+/* ----- Visually Hidden ----- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

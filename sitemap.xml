@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Update URLs once the final domain is known -->
+  <url>
+    <loc>REPLACE_WITH_ABSOLUTE_URL/</loc>
+  </url>
+  <url>
+    <loc>REPLACE_WITH_ABSOLUTE_URL/attorneys/</loc>
+  </url>
+  <url>
+    <loc>REPLACE_WITH_ABSOLUTE_URL/practice/</loc>
+  </url>
+  <url>
+    <loc>REPLACE_WITH_ABSOLUTE_URL/contact/</loc>
+  </url>
+</urlset>

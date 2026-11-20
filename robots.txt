@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap: REPLACE_WITH_ABSOLUTE_URL/sitemap.xml
