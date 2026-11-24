@@ -23,10 +23,13 @@
     submitBtn.textContent = 'Sending...';
     statusEl.hidden = true;
 
-    // Submit via fetch
-    fetch(form.action, {
+    // Submit via fetch to AJAX endpoint (form.action is kept for no-JS fallback)
+    var formData = new FormData(form);
+    formData.delete('_next'); // _next is only for the no-JS redirect path
+
+    fetch('https://formsubmit.co/ajax/help@langfordramos.com', {
       method: 'POST',
-      body: new FormData(form),
+      body: formData,
       headers: {
         'Accept': 'application/json'
       }
@@ -47,8 +50,9 @@
         throw new Error(data.message || 'Form submission failed');
       }
     })
-    .catch(function() {
+    .catch(function(error) {
       // Error: show message and re-enable button
+      console.error('Contact form submission failed:', error);
       submitBtn.disabled = false;
       submitBtn.textContent = originalBtnText;
       statusEl.className = 'form-status form-status--error';
