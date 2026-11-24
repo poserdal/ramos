@@ -733,3 +733,8 @@ a {
   white-space: nowrap;
   border: 0;
 }
+
+/* ----- Honeypot Field ----- */
+.form-honey {
+  display: none;
+}

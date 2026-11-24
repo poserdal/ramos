@@ -10,11 +10,34 @@
   var statusEl = document.getElementById('form-status');
   var originalBtnText = submitBtn.textContent;
 
+  // Spam protection: record page load time and set JS token
+  var pageLoadTime = Date.now();
+  var jsTokenField = form.querySelector('input[name="_gotcha"]');
+  if (jsTokenField) {
+    jsTokenField.value = 'js-enabled';
+  }
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     // Native validation
     if (!form.reportValidity()) {
+      return;
+    }
+
+    // Spam protection: time trap (< 3 seconds = likely bot)
+    var submitTime = Date.now();
+    if (submitTime - pageLoadTime < 3000) {
+      // Show success silently, don't actually send
+      form.innerHTML = '<p class="form-status form-status--success" tabindex="-1">Thank you. Your message has been sent. We will be in touch.</p>';
+      form.querySelector('.form-status--success').focus();
+      return;
+    }
+
+    // Spam protection: JS token must be filled (bots won't run JS)
+    if (jsTokenField && jsTokenField.value !== 'js-enabled') {
+      form.innerHTML = '<p class="form-status form-status--success" tabindex="-1">Thank you. Your message has been sent. We will be in touch.</p>';
+      form.querySelector('.form-status--success').focus();
       return;
     }
 
@@ -26,7 +49,14 @@
     // Submit via fetch to AJAX endpoint (form.action is kept for no-JS fallback)
     var formData = new FormData(form);
     formData.delete('_next'); // _next is only for the no-JS redirect path
+    formData.delete('_gotcha'); // Don't send the JS token field
 
+    // Set dynamic subject line with sender's name
+    var firstName = form.querySelector('#first_name').value.trim();
+    var lastName = form.querySelector('#last_name').value.trim();
+    formData.set('_subject', 'New website inquiry - ' + firstName + ' ' + lastName);
+
+    // TODO: Replace email with FormSubmit random string when available
     fetch('https://formsubmit.co/ajax/help@langfordramos.com', {
       method: 'POST',
       body: formData,
